@@ -1,8 +1,6 @@
 <?php
-$headers = apache_request_headers();
-$mtime = filemtime( 'index.php' );
-$modifiedSince = isset( $headers['If-Modified-Since'] ) && ( strtotime( $headers['If-Modified-Since'] ) == $mtime );
-header( 'Last-Modified: ' . gmdate( 'D, d M Y H:i:s', $mtime ) . ' GMT', true, $modifiedSince ? 304 : 200 );
+require_once( __DIR__ . '/functions.php' );
+lastModifiedHeaders();
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +12,7 @@ header( 'Last-Modified: ' . gmdate( 'D, d M Y H:i:s', $mtime ) . ' GMT', true, $
 <body>
 <?php
 
-echo "No :(";
+echo isReedyInTheUK();
 
 ?>
 </body>
