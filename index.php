@@ -12,7 +12,7 @@ lastModifiedHeaders();
 <body>
 <?php
 
-echo isReedyInTheUK();
+echo isReedyInTheUKMessage();
 
 ?>
 </body>

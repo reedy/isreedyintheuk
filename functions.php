@@ -7,8 +7,19 @@ function lastModifiedHeaders() {
 }
 
 /**
- * @returns string
+ * @return bool
  */
 function isReedyInTheUK() {
-	return 'No :(';
+	return false;
+}
+
+/**
+ * @return string
+ */
+function isReedyInTheUKMessage() {
+	if ( isReedyInTheUK() ) {
+		return 'Yes :)';
+	} else {
+		return 'No :(';
+	}
 }
