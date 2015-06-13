@@ -1,13 +1,16 @@
 <?php
 function lastModifiedHeaders() {
 	$headers = apache_request_headers();
-	$mtime = filemtime( 'functions.php' );
-	$modifiedSince = isset( $headers['If-Modified-Since'] )
-		&& ( strtotime( $headers['If-Modified-Since'] ) == $mtime );
+	$modified = true;
+	if ( isset( $headers['If-Modified-Since'] ) ) {
+		$isInUK = isReedyInTheUK();
+		$wasInUK = willReedyBeInTheUKAtThisTime( strtotime( $headers['If-Modified-Since'] );
+		$modified = $isInUK !== $wasInUK;
+	}
 	header(
-		'Last-Modified: ' . gmdate( 'D, d M Y H:i:s', $mtime ) . ' GMT',
+		'Last-Modified: ' . gmdate( 'D, d M Y H:i:s', filemtime( 'functions.php' ) ) . ' GMT',
 		true,
-		$modifiedSince ? 304 : 200
+		$modified ? 200 : 304
 	);
 }
 
