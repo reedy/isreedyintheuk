@@ -1,10 +1,13 @@
 <?php
 function lastModifiedHeaders() {
+	if ( php_sapi_name() === 'cli' ) {
+		return;
+	}
 	$headers = apache_request_headers();
 	$modified = true;
 	if ( isset( $headers['If-Modified-Since'] ) ) {
 		$isInUK = isReedyInTheUK();
-		$wasInUK = willReedyBeInTheUKAtThisTime( strtotime( $headers['If-Modified-Since'] );
+		$wasInUK = willReedyBeInTheUKAtThisTime( strtotime( $headers['If-Modified-Since'] ) );
 		$modified = $isInUK !== $wasInUK;
 	}
 	header(
@@ -16,15 +19,14 @@ function lastModifiedHeaders() {
 
 /**
  * @param $time string Time to see if Reedy is/was/will be in the UK at said timestamp
- * 
+ *
  * @return bool
  */
 function willReedyBeInTheUKAtThisTime( $time ) {
 	$times = array();
 	$times[] = array( 'from' => '2015-06-17T10:00 +1:00', 'to' => '2015-06-26T14:15 +1:00' );
-	
-	foreach( $times as $time ) {
-		if ( $time >= strttotime( $time['from'] ) && $time <= strttotime( $time['to'] ) ) {
+	foreach( $times as $t ) {
+		if ( $time >= strtotime( $t['from'] ) && $time <= strtotime( $t['to'] ) ) {
 			return true;
 		}
 	}
