@@ -23,8 +23,9 @@ function lastModifiedHeaders() {
  * @return bool
  */
 function willReedyBeInTheUKAtThisTime( $time ) {
-	$times = array();
-	$times[] = array( 'from' => '2015-06-17T10:00 +1:00', 'to' => '2015-06-26T14:15 +1:00' );
+	$times = array(
+		array( 'from' => '2015-06-17T10:00 +1:00', 'to' => '2015-06-26T14:15 +1:00' )
+	);
 	foreach( $times as $t ) {
 		if ( $time >= strtotime( $t['from'] ) && $time <= strtotime( $t['to'] ) ) {
 			return true;
