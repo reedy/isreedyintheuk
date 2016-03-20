@@ -29,7 +29,8 @@ function willReedyBeInTheUKAtThisTime( $time ) {
 		array( 'from' => '2015-06-26T14:15 +1:00', 'to' => '2015-08-02T09:49 +1:00' ),
 		array( 'from' => '2015-08-06T13:05 +1:00', 'to' => '2015-08-17T15:25 +1:00' ),
 		array( 'from' => '2015-09-03T14:30 +1:00', 'to' => '2015-09-30T13:35 +1:00' ),
-		array( 'from' => '2016-01-29T14:50 +0:00', 'to' => '2016-02-02T12:45 +0:00' ),
+		array( 'from' => '2016-01-29T14:50 +1:00', 'to' => '2016-02-02T12:45 +1:00' ),
+		array( 'from' => '2016-03-31T12:55 +0:00', 'to' => '2016-04-05T00:35 +0:00' ),
 	);
 	foreach( $timesNotInTheUK as $t ) {
 		if ( $time >= strtotime( $t['from'] ) && $time <= strtotime( $t['to'] ) ) {
