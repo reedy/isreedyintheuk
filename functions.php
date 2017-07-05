@@ -3,7 +3,7 @@ function lastModifiedHeaders() {
 	if ( php_sapi_name() === 'cli' ) {
 		return;
 	}
-	$headers = apache_request_headers();
+	$headers = function_exists( 'apache_request_headers' ) ? apache_request_headers() : [];
 	$modified = true;
 	if ( isset( $headers['If-Modified-Since'] ) ) {
 		$isInUK = isReedyInTheUK();
