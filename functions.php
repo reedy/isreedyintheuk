@@ -60,6 +60,8 @@ function willReedyBeInTheUKAtThisTime( $time ) {
 		[ 'from' => '2018-03-26T09:40 +1:00', 'to' => '2018-03-31T06:20 +1:00', 'loc' => [ 'IE', 'US' ] ],
 		[ 'from' => '2018-04-03T07:30 +1:00', 'to' => '2018-04-03T17:10 +1:00', 'loc' => [ 'FI' ] ],
 		[ 'from' => '2018-04-03T19:00 +1:00', 'to' => '2018-04-05T19:25 +1:00', 'loc' => [ 'RO' ] ],
+		[ 'from' => '2018-04-06T20:10 +1:00', 'to' => '2018-04-11T06:50 +1:00', 'loc' => [ 'FR', 'US' ] ],
+		[ 'from' => '2018-11-16T07:30 +0:00', 'to' => '2018-11-05T11:55 +0:00', 'loc' => [ 'QR', 'NZ' ] ],
 	];
 	foreach( $timesNotInTheUK as $t ) {
 		if ( $time >= strtotime( $t['from'] ) && $time <= strtotime( $t['to'] ) ) {
