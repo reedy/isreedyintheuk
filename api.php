@@ -3,7 +3,7 @@ require_once( __DIR__ . '/functions.php' );
 lastModifiedHeaders();
 header( 'Content-Type: application/json' );
 
-$result = array();
+$result = [];
 
 if ( isReedyInTheUK() ) {
 	$result['isreedyintheuk'] = '';
