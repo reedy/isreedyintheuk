@@ -7,7 +7,7 @@
 	},
 	"scripts": {
 		"jsonlint": "jsonlint absent.json",
-		"lint": "parallel-lint --exclude vendor",
+		"lint": "parallel-lint --exclude vendor .",
 		"test": [
 			"composer lint",
 			"composer jsonlint"
