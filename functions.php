@@ -1,6 +1,6 @@
 <?php
 function lastModifiedHeaders() {
-	if ( php_sapi_name() === 'cli' ) {
+	if ( PHP_SAPI === 'cli' ) {
 		return;
 	}
 
@@ -30,7 +30,7 @@ function lastModifiedHeaders() {
 /**
  * @return string
  */
-function getCountryFromDomain() {
+function getCountryFromDomain(): string {
 	$domains = [
 		// domain => country
 		'isreedyintheuk.com' => 'UK',
@@ -46,7 +46,7 @@ function getCountryFromDomain() {
  *
  * @return bool
  */
-function isReedyInTheUKAtThisTime( $time ) {
+function isReedyInTheUKAtThisTime( string $time ): bool {
 	$timesNotInTheUK = json_decode( file_get_contents( __DIR__ . '/absent.json' ), true );
 	foreach( $timesNotInTheUK as $t ) {
 		if (
@@ -65,9 +65,14 @@ function isReedyInTheUKAtThisTime( $time ) {
  *
  * @return bool
  */
-function isReedyInACountryAtThisTime( $time, $country ) {
-	$timesNotInTheCountry = json_decode( file_get_contents( __DIR__ . '/absent.json' ), true );
-	foreach( $timesNotInTheCountry as $t ) {
+function isReedyInACountryAtThisTime( string $time, string $country ): bool {
+	$timesNotInTheCountry = json_decode(
+        file_get_contents( __DIR__ . '/absent.json' ),
+        true
+    );
+
+    // Newer entries are at the bottom, so makes sense to start at the bottom...
+	foreach( array_reverse( $timesNotInTheCountry ) as $t ) {
 		if (
 			in_array( $country, $t['loc'] ) &&
 			$time >= strtotime( $t['from'] ) &&
@@ -82,7 +87,7 @@ function isReedyInACountryAtThisTime( $time, $country ) {
 /**
  * @return bool
  */
-function isReedyInTheUKNow() {
+function isReedyInTheUKNow(): bool {
 	return isReedyInTheUKAtThisTime( time() );
 }
 
@@ -91,15 +96,15 @@ function isReedyInTheUKNow() {
  * @param $country string Country
  * @return bool
  */
-function isReedyInThisCountryNow( $country ) {
+function isReedyInThisCountryNow( string $country ): bool {
 	return isReedyInACountryAtThisTime( time(), $country );
 }
 
 /**
- * @param $bool In the country?
+ * @param $bool bool In the country?
  *
  * @return string
  */
-function isReedyInCountryMessage( $bool ) {
+function isReedyInCountryMessage( bool $bool ): string {
 	return $bool ? 'Yes :)' : 'No :(';
 }

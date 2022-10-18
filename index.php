@@ -8,7 +8,7 @@ $country = getCountryFromDomain();
 <html lang="en-GB" dir="ltr">
 <head>
 <meta charset="UTF-8" />
-<title>isreedyinthe<?php strtolower( $country ) ?></title>
+<title>isreedyinthe<?php echo strtolower( $country ) ?></title>
 </head>
 <body>
 <?php
