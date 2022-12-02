@@ -14,8 +14,8 @@
 		"jsonlint": "jsonlint absent.json",
 		"lint": "parallel-lint --exclude vendor .",
 		"test": [
-			"composer lint",
-			"composer jsonlint"
+			"@lint",
+			"@jsonlint"
 		]
 	}
 }
