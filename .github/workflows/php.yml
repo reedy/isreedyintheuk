@@ -19,6 +19,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      
+    - name: Use PHP ${{ matrix.php }}
+      run: sudo update-alternatives --set php /usr/bin/php${{ matrix.php }}
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
