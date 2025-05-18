@@ -12,15 +12,15 @@ jobs:
         include:
           # Has php7.4-8.2 and composer 2.4 pre-installed
           # https://github.com/actions/runner-images/blob/6b24925/images/linux/Ubuntu2004-Readme.md#php
-          - os: ubuntu-20.04
-            php: "7.4"
-          - os: ubuntu-20.04
-            php: "8.0"
+          #- os: ubuntu-20.04
+          #  php: "7.4"
+          #- os: ubuntu-20.04
+          #  php: "8.0"
           # https://github.com/actions/runner-images/blob/c4d1068/images/ubuntu/Ubuntu2204-Readme.md#php-tools
           - os: ubuntu-22.04
             php: "8.1"
-          - os: ubuntu-20.04
-            php: "8.2"
+          #- os: ubuntu-20.04
+          #  php: "8.2"
           # https://github.com/actions/runner-images/blob/c4d1068/images/ubuntu/Ubuntu2404-Readme.md#php-tools
           - os: ubuntu-24.04
             php: "8.3"
